@@ -47,5 +47,4 @@ public class FieldXYWithExtremeDataTest {
         Assert.assertEquals("Wrong X coordinate", finalX, robot.getX());
         Assert.assertEquals("Wrong Y coordinate", finalY, robot.getY());
     }
-
 }

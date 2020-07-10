@@ -10,7 +10,78 @@
  */
 
 public class FieldXY {
+    public void message (){
+        System.out.println("robot at place");
+    }
+    public void gotoX ( int coordinateXNOW,int toX,Robot robot ){
+        if(coordinateXNOW > toX){
+            while(robot.getDirection()!=Direction.LEFT){
+                robot.turnLeft();
+            }
+
+        }
+        if(coordinateXNOW <toX){
+            while(robot.getDirection()!=Direction.RIGHT){
+                robot.turnRight();
+            }
+
+        }
+        while(coordinateXNOW != toX){
+            robot.stepForward();
+        }
+    }
+
+    public void gotoY ( int coordinateYNOW,int toY,Robot robot ){
+        if(coordinateYNOW > toY){
+            while(robot.getDirection()!=Direction.DOWN){
+                robot.turnLeft();
+            }
+        }
+        if(coordinateYNOW <toY){
+            while(robot.getDirection()!=Direction.UP){
+                robot.turnRight();
+            }
+
+        }
+        while(coordinateYNOW != toY){
+            robot.stepForward();
+        }
+
+    }
+
     public void moveRobot(Robot robot, int toX, int toY) {
-        //your code
+        int coordinateXNOW = robot.getX();
+        int coordinateYNOW = robot.getY();
+        if(coordinateXNOW == toX && coordinateYNOW== toY) {
+            message ();
+        }
+
+
+
+        if(coordinateXNOW != toX && coordinateYNOW == toY ){
+            gotoX ( coordinateXNOW,toX,robot );
+            if(coordinateYNOW == toY) {
+                message ();
+            }
+    }
+
+        if(coordinateXNOW == toX && coordinateYNOW != toY ){
+
+            gotoY ( coordinateYNOW, toY,robot );
+            if(coordinateYNOW == toY) {
+                message ();;
+            }
+
+        }
+
+        if(coordinateXNOW != toX && coordinateYNOW != toY ){
+            gotoX ( coordinateXNOW,toX,robot );
+            gotoY ( coordinateYNOW, toY,robot );
+
+            if(coordinateXNOW == toX && coordinateYNOW == toY ) {
+                message ();
+            }
+        }
+
     }
 }
